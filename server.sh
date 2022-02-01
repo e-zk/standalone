@@ -53,6 +53,14 @@ compareLineCount() {
   if [ "$AUTH_ENV_FILE_SAMPLE_LINES" -ne "$AUTH_ENV_FILE_LINES" ]; then echo "The docker/auth.env file contains different amount of lines than docker/auth.env.sample. This may be caused by the fact that there is a new environment variable to configure. Please update your environment file and try again." && exit 1; fi
 }
 
+# if no args are given, print usage and exit
+if [ "$#" -lt 1 ]; then
+	printUsage
+	exit 1
+fi
+
+# or, we do this
+#COMMAND=$1 && [ -n "$COMMAND ] && shift 1
 COMMAND=$1 && shift 1
 
 case "$COMMAND" in
